@@ -45,12 +45,14 @@ const villes = {
     lyon : {nom:"Lyon", latitude: 45.75, longitude: 4.85}
 }
 
-const getCoordonnees = (ville => ville.longitude)
-console.log(getCoordonnees('lyon'))
+const getCoordonnees = (ville => { return `${ville.longitude}, ${ville.latitude}`})
+console.log(getCoordonnees(villes.lyon))
+
+const getCoordonnees2 = (({longitude,latitude}) => { return `${longitude}, ${latitude}`})
+console.log(getCoordonnees2(villes.lyon))
 
 
 
-/*
 // Séparateur
 console.log("----- Exercice 4 -----")
 
@@ -62,6 +64,28 @@ const personnages = [
 ];
 
 let NomMaj = []
-NomMaj.push(personnages.forEach(personnage => personnage.nom.toUpperCase()))
+personnages.forEach(personnage => NomMaj.push(personnage.nom.toUpperCase()))
 console.log(NomMaj)
-*/
+
+
+// Séparateur
+console.log("----- Exercice 5 -----")
+
+const supprimerPerso = (({nom}) => personnages.shift(nom))
+supprimerPerso('Tya')
+console.log(personnages)
+
+
+// Séparateur
+console.log("----- Exercice 6 -----")
+
+const personnages2 = [
+    {nom: "Tya", age:25, continent:"Asie"},
+    {nom: "Milo", age:22,continent:"Europe"},
+    {nom: "Nina", age:32,continent:"Asie"},
+    {nom: "Elio", age:21,continent:"Europe"},
+];
+
+let Europe = []
+const getEurope = (({continent,nom}) => Europe.push(nom))
+console.log(getEurope('Europe'))
